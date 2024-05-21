@@ -1,6 +1,7 @@
 ---
 import { getLanguageFromURL } from '../../languages'
 import { SIDEBAR } from '../../consts'
+import '@astrojs/tailwind'
 
 type Props = {
   currentPage: string
@@ -13,14 +14,31 @@ const currentPageMatch = currentPage.endsWith('/')
 const langCode = getLanguageFromURL(currentPage)
 const sidebar = SIDEBAR[langCode]
 ---
+<div class="absolute inset-y-0 right-0 w-[50vw] bg-cream dark:hidden"></div>
+<div class="absolute top-16 bottom-0 right-0 hidden h-12 w-px bg-gradient-to-t from-gray-800 dark:block"></div>
+<div class="absolute top-28 bottom-0 right-0 hidden w-px bg-gray-800 dark:block"></div>
+<nav aria-labelledby="grid-left" class="sticky top-10 -ml-0.5 h-screen overflow-y-auto overflow-x-hidden pt-10 pb-16 pl-0.5 navigation-custom-scrollbar" x-data="{
+  position: 0,
+  init() {
+    this.position = localStorage.getItem('sidebarScrollPosition') || 0;
 
-<nav aria-labelledby="grid-left">
+    if (this.position > 0) {
+      this.$el.scrollTop = this.position;
+    }
+
+    this.$el.addEventListener('scroll', () => {
+      this.position = this.$el.scrollTop;
+      localStorage.setItem('sidebarScrollPosition', this.position);
+    });
+  }
+}">
+
   <ul class="nav-groups">
     {
       Object.entries(sidebar).map(([header, children]) => (
         <li>
           <div class="nav-group">
-            <h2>{header}</h2>
+            <h2 class="nav-group-title">{header}</h2>
             <ul>
               {children.map((child) => {
                 const url = Astro.site?.pathname + child.link
@@ -28,11 +46,14 @@ const sidebar = SIDEBAR[langCode]
                   <li class="nav-link">
                     <a
                       href={url}
+                      class={`block transition duration-300 rounded-lg px-4 py-3 font-display bg-merino/70 dark:bg-dolphin/20 font-semibold ${currentPageMatch === child.link ? 'current' : 'text-black dark:text-butter'}`}
                       aria-current={
                         currentPageMatch === child.link ? 'page' : false
                       }
+
                     >
-                      {child.text}
+                      <span class="icon-placeholder"><i class="fa fa-icon"></i></span>
+                      <span class="text-hurricane font-semibold">{child.text}</span>
                     </a>
                   </li>
                 )
@@ -45,6 +66,7 @@ const sidebar = SIDEBAR[langCode]
   </ul>
 </nav>
 
+
 <script is:inline>
   window.addEventListener('DOMContentLoaded', () => {
     var target = document.querySelector('[aria-current="page"]')
@@ -55,68 +77,95 @@ const sidebar = SIDEBAR[langCode]
 </script>
 
 <style>
-  nav {
-    width: 100%;
-    margin-right: 1rem;
-  }
+nav {
+  width: 100%;
+  margin-right: 1rem;
+}
 
+.nav-groups {
+  height: 100%;
+  padding: 2rem 0;
+  overflow-x: visible;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.nav-groups > li + li {
+  margin-top: 2rem;
+}
+
+.nav-groups > :first-child {
+  padding-top: var(--doc-padding);
+}
+
+.nav-groups > :last-child {
+  padding-bottom: 2rem;
+  margin-bottom: var(--theme-navbar-height);
+}
+
+.nav-group-title {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.1rem 1rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.nav-link a {
+  font-size: 1rem;
+  color: var(--color-base-white);
+  margin: 5px;
+  margin-bottom: 0.6rem;
+  padding: 1rem 1.5rem; /* Adjusted padding */
+  font: bold 1rem/1.5 'Be Vietnam Pro', sans-serif;
+  text-decoration: none;
+  display: flex;
+  align-items: center; /* Center icon and text vertically */
+  background-color: var(--theme-bg-accent);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.nav-link a:hover{
+ background-color:#6c64894d;
+}
+
+.nav-link a span.icon-placeholder {
+  margin-right: 0.5rem; /* Adjusted padding for icon */
+}
+
+.nav-link a span {
+  display: inline-block;
+}
+
+.nav-link a:not(.current):hover span,
+.nav-link a:not(.current):focus span {
+  transform: translateX(5px); /* Move text slightly to the right */
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: rgb(192 132 252 / var(--tw-text-opacity)); /* Change text color to purple */
+}
+
+.nav-link a span[aria-current='page'] {
+  color: var(--theme-text-accent);
+  background-color: var(--base-white);
+  font-weight: 600;
+}
+
+.current {
+  color: var(--theme-text-accent); /* Ensure current page text color is distinct */
+}
+
+@media (min-width: 50em) {
   .nav-groups {
-    height: 100%;
-    padding: 2rem 0;
-    overflow-x: visible;
-    overflow-y: auto;
-    max-height: 100vh;
+    padding: 0;
   }
+}
 
-  .nav-groups > li + li {
-    margin-top: 2rem;
-  }
-
-  .nav-groups > :first-child {
-    padding-top: var(--doc-padding);
-  }
-
-  .nav-groups > :last-child {
-    padding-bottom: 2rem;
-    margin-bottom: var(--theme-navbar-height);
-  }
-
-  .nav-group-title {
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 0.1rem 1rem;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  .nav-link a {
-    font-size: 1rem;
-    margin: 1px;
-    padding: 0.3rem 1rem;
-    text-decoration: none;
-    display: block;
-  }
-
-  .nav-link a:hover,
-  .nav-link a:focus {
-    background-color: var(--theme-bg-hover);
-  }
-
-  .nav-link a[aria-current='page'] {
-    color: var(--theme-text-accent);
-    background-color: var(--theme-bg-accent);
-    font-weight: 600;
-  }
-
-  @media (min-width: 50em) {
-    .nav-groups {
-      padding: 0;
-    }
-  }
+:root.theme-dark .nav-link a[aria-current='page'] {
+  color: var(--theme-text-accent);
+}
 </style>
 
 <style is:global>
   :root.theme-dark .nav-link a[aria-current='page'] {
-    color: hsla(var(--color-base-white), 100%, 1);
+    color: hsla(var(--theme-text-accent));
   }
 </style>
