@@ -419,5 +419,8 @@ h2.heading {
 }
 
 .current-header-link a {
-  color: var(--theme-text);
+  color: #fdae4b;
+  text-decoration: none;
+  transition-timing-function:cubic-bezier(0,0,.2,1);
+  font-weight: 700;
 }
