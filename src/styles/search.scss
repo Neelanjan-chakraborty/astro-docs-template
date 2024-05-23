@@ -60,3 +60,16 @@
     /* top: -1px; */
     /* width: 20px; */
 }
+@media only screen and (max-width: 800px) {
+  .DocSearch-Button {
+    justify-content: center; /* Center the content horizontally */
+    width: 100%; /* Occupy full width */
+    margin: 0; /* Remove any margin */
+  }
+  .DocSearch-Button-Placeholder {
+    display: none; /* Hide the placeholder text */
+  }
+  .DocSearch-Button-Keys {
+    display: none; /* Hide the keys */
+  }
+}

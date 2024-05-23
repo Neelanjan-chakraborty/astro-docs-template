@@ -1,5 +1,5 @@
 export const SITE = {
-  title: 'Documentation',
+  title: 'Installation',
   description: 'Your website description.',
   defaultLanguage: 'en-us'
 } as const
@@ -26,9 +26,9 @@ export const COMMUNITY_INVITE_URL = `https://astro.build/chat`
 
 // See "Algolia" section of the README for more information.
 export const ALGOLIA = {
-  indexName: 'XXXXXXXXXX',
-  appId: 'XXXXXXXXXX',
-  apiKey: 'XXXXXXXXXX'
+  indexName: 'dev_neelanjan',
+  appId: 'K6XFFC65NG',
+  apiKey: '22b49a8f07ac28a2d7586c26536e1759'
 }
 
 export type Sidebar = Record<
