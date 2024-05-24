@@ -2,22 +2,18 @@
 import LeftSidebar from '../LeftSidebar/LeftSidebar.astro';
 
 type Props = {
+  isSidebarOpen: boolean;
   currentPage: string;
 };
 
-const { currentPage } = Astro.props as Props;
+const { isSidebarOpen, currentPage } = Astro.props as Props;
 ---
 
-<script lang="js">
-  function toggleSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.toggle('open');
-  }
 </script>
 
 <div class="sidebar-shadow" onclick="toggleSidebar()"></div>
-<nav class="sidebar">
-  <LeftSidebar currentPage={currentPage} />
+<nav class={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+    <LeftSidebar currentPage={currentPage} />
 </nav>
 
 <style>
