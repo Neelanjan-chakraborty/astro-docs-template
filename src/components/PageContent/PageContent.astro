@@ -14,7 +14,7 @@ const { title, headings, editUrl } = Astro.props
 
 <article id="article" class="content">
   <section class="main-section">
-    <h2 class="content-title" id="overview">{title}</h1>
+    <span class="text-xl font-bold text-[#fdae4b]"><span class="content-title" id="overview">{title}</span></span>
     <nav class="block sm:hidden">
       <TableOfContents client:media="(max-width: 50em)" headings={headings} />
     </nav>

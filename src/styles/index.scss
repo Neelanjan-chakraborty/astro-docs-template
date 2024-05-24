@@ -74,7 +74,7 @@ h1 {
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 2.0rem;
 }
 
 h3 {
@@ -87,6 +87,11 @@ h4 {
 
 h5 {
   font-size: 1rem;
+}
+h2::before {
+  content: "#";
+  color: #fdae4b;
+  margin-right: 5px; /* Adds some space between the # and the heading text */
 }
 
 p {
@@ -118,6 +123,20 @@ a {
 article > section :is(ul, ol) > * + * {
   margin-top: 0.75rem;
 }
+article > section ul > li::before {
+  content: "•";
+  margin-top: 0.75rem;
+}
+
+article > section ul > li::before{
+  // content: "• ";
+  margin-right: 0.5rem; /* Optional: adjust space between bullet and text */
+}
+
+article > section ul > ::before{
+  // content: "• ";
+  margin-right: 0.5rem; /* Optional: adjust space between bullet and text */
+}
 
 article > section nav :is(ul, ol) > * + * {
   margin-top: inherit;
@@ -129,6 +148,7 @@ article > section li > :is(p, pre, blockquote):not(:first-child) {
 
 article > section :is(ul, ol) {
   padding-left: 1em;
+  color: red;
 }
 
 article > section nav :is(ul, ol) {

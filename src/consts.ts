@@ -33,23 +33,24 @@ export const ALGOLIA = {
 
 export type Sidebar = Record<
   (typeof KNOWN_LANGUAGE_CODES)[number],
-  Record<string, { text: string; link: string }[]>
+  Record<string, {icon: string; text: string; link: string }[]>
 >
 export const SIDEBAR: Sidebar = {
   de: {
     Überschrift: [
-      { text: 'Einführung', link: 'de/introduction' },
-      { text: 'Seite 2', link: 'de/page-2' },
-      { text: 'Seite 3', link: 'de/page-3' }
+      {icon: '<i class="fas fa-home"></i>', text: 'Einführung', link: 'de/introduction' },
+      {icon: '<i class="fas fa-user"></i>', text: 'Seite 2', link: 'de/page-2' },
+      {icon: '<i class="fas fa-cog"></i>', text: 'Seite 3', link: 'de/page-3' }
     ],
-    'Ein weiterer Abschnitt': [{ text: 'Seite 4', link: 'de/page-4' }]
+    // 'Ein weiterer Abschnitt': [{ text: 'Seite 4', link: 'de/page-4' }]
   },
   en: {
     'Section Header': [
-      { text: 'Introduction', link: 'en/introduction' },
-      { text: 'Page 2', link: 'en/page-2' },
-      { text: 'Page 3', link: 'en/page-3' }
+      {icon: '<i class="fas fa-info"></i>', text: 'Introduction', link: 'en/introduction' },
+      {icon: '<i class="fas fa-users"></i>', text: 'User Instruction', link: 'en/page-2' },
+      {icon: '<i class="fas fa-wrench"></i>', text: 'Admin Instruction', link: 'en/page-3' }
     ],
-    'Another Section': [{ text: 'Page 4', link: 'en/page-4' }]
+    // 'Another Section': [{ text: 'Page 4', link: 'en/page-4' }]
   }
 }
+

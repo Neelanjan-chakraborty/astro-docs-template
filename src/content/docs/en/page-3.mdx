@@ -1,36 +1,46 @@
----
-title: 'Page 3'
-description: 'Lorem ipsum dolor sit amet - 3'
----
+## Admin Instructions
 
-This is a fully-featured page, written in Markdown!
+### How to get Logged into Punch?
 
-## Section A
+**Admin Access and Initial Login:**
+The admin has access, to log into their Cranberry account.
+- Use the "Login using Cranberry cookie" option.
+- **Redirect to Punch Dashboard:** After logging into the Cranberry account, the user will be redirected to the Punch dashboard.
 
-Lorem ipsum dolor sit amet, **consectetur adipiscing elit**. Sed ut tortor _suscipit_, posuere ante id, vulputate urna. Pellentesque molestie aliquam dui sagittis aliquet. Sed sed felis convallis, lacinia lorem sit amet, fermentum ex. Etiam hendrerit mauris at elementum egestas. Vivamus id gravida ante. Praesent consectetur fermentum turpis, quis blandit tortor feugiat in. Aliquam erat volutpat. In elementum purus et tristique ornare. Suspendisse sollicitudin dignissim est a ultrices. Pellentesque sed ipsum finibus, condimentum metus eget, sagittis elit. Sed id lorem justo. Vivamus in sem ac mi molestie ornare.
+### Using Punch Feature as an admin:
 
-## Section B
+- **Attendance Management:**
+  - **Kiosk:** Admins can easily search for employees' names in the kiosk section to check their attendance details.
+  - **Attendance Calendar:** Admins have the flexibility to view the attendance of all employees based on applied filters, such as months, employees, or departments.
+  - **Attendance Details:** Admins can review detailed attendance records, including recent check-ins, check-outs, IP addresses, and clocking device information for all employees. Filtering options based on employee code/name from the “choose column” streamline the view for easier management.
+  - **New Attendance Creation:** Admins can create new attendance records for employees by inputting their check-in and check-out timings.
+  - **Clocking Device Management:** Admins can easily create new clocking devices by filling out the required form fields in the clocking devices section.
+  - **Holiday Management:** Admins can add new holidays to the calendar by clicking the "create holiday" option. Customizable fields allow admins to input details such as holiday type, ensuring accurate holiday tracking for employees.
+  - **Employee Management:** When a new employee joins the company, the admin first creates their profile based on the employee type. Employee types are created to differentiate personal and official details.
 
-Nam quam dolor, pellentesque sed odio euismod, feugiat tempus tellus. Quisque arcu velit, ultricies in faucibus sed, ultrices ac enim. Nunc eget dictum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ex nisi, egestas mollis ultricies ut, laoreet suscipit libero. Nam condimentum molestie turpis. Sed vestibulum sagittis congue. Maecenas tristique enim et tincidunt tempor. Curabitur ac scelerisque nulla, in malesuada libero. Praesent eu tempus odio. Pellentesque aliquam ullamcorper quam at gravida. Sed non fringilla mauris. Aenean sit amet ultrices erat. Vestibulum congue venenatis tortor, nec suscipit tortor. Aenean pellentesque mauris eget tortor tincidunt pharetra.
+### User Workflow from an Admin Perspective
 
-## Section C
+- **Employment Type:**
+  - **What is an Employment Type?**
+    You can employ people under several categories like Full-Time/ Part-Time based on the role defined. This is called an Employment Type.
+  - **How to Create an Employment Type for a new user?**
+    To create an employment type:
+    - Click on “Employment Types”
+    - Fill in the table with the necessary details - For example- Full Time then the slug will appear automatically.
+    - Once generated click on “Create” to finalize the employment type.
 
-```markdown
----
-title: Markdown Page!
-lang: en
-layout: ~/layouts/MainLayout.astro
----
+### Onboarding
 
-# Markdown example
+Upon successful creation of an employee then comes the onboarding process. Where the admin will create a new employee in the onboarding field which comes next to the employee field.
 
-This is a fully-featured page, written in Markdown!
+### User
 
-## Section A
+New users are created by entering their credentials and based on the roles assigned to the user. For example, a new employee who has joined an HR department will get access to the role to work with.
 
-Lorem ipsum dolor sit amet, **consectetur adipiscing elit**. Sed ut tortor _suscipit_, posuere ante id, vulputate urna. Pellentesque molestie aliquam dui sagittis aliquet. Sed sed felis convallis, lacinia lorem sit amet, fermentum ex. Etiam hendrerit mauris at elementum egestas. Vivamus id gravida ante. Praesent consectetur fermentum turpis, quis blandit tortor feugiat in. Aliquam erat volutpat. In elementum purus et tristique ornare. Suspendisse sollicitudin dignissim est a ultrices. Pellentesque sed ipsum finibus, condimentum metus eget, sagittis elit. Sed id lorem justo. Vivamus in sem ac mi molestie ornare.
+### Permission
 
-## Section B
+Create new permissions using the designated section with "Create" and "Cancel" buttons. Assign roles to these permissions as they are created. Use the "Create new role" option to define roles with unique permissions.
 
-Nam quam dolor, pellentesque sed odio euismod, feugiat tempus tellus. Quisque arcu velit, ultricies in faucibus sed, ultrices ac enim. Nunc eget dictum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ex nisi, egestas mollis ultricies ut, laoreet suscipit libero. Nam condimentum molestie turpis. Sed vestibulum sagittis congue. Maecenas tristique enim et tincidunt tempor. Curabitur ac scelerisque nulla, in malesuada libero. Praesent eu tempus odio. Pellentesque aliquam ullamcorper quam at gravida. Sed non fringilla mauris. Aenean sit amet ultrices erat. Vestibulum congue venenatis tortor, nec suscipit tortor. Aenean pellentesque mauris eget tortor tincidunt pharetra.
-```
+### Roles
+
+To create a new role first the admin needs to fill in the credentials like name, and Guard Name(Web, API); then the admin needs to give the permissions based on the role defined. After the Successful creation of the new role, the user will be able to access the certain area to which the admin has given permission.
