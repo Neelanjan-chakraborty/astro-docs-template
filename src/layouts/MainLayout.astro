@@ -8,6 +8,8 @@ import PageContent from '../components/PageContent/PageContent.astro'
 import LeftSidebar from '../components/LeftSidebar/LeftSidebar.astro'
 import RightSidebar from '../components/RightSidebar/RightSidebar.astro'
 import Footer from '../components/Footer/Footer.astro'
+import Sidebar from '../components/MobileSidebar/Sidebar.astro'
+// import MenuToggle from '../components/Header/SidebarToggle.jsx'
 // import { icon } from '@fortawesome/fontawesome-svg-core';
 import { EDIT_URL, SITE } from '../consts'
 
@@ -121,6 +123,7 @@ const editUrl = `${EDIT_URL}/${currentFile}`
 
   <body>
     <Header currentPage={currentPage} />
+    <!-- <Sidebar client:idle currentPage={currentPage} /> -->
     <main class="layout">
       <aside id="grid-left" class="grid-sidebar" title="Site Navigation">
         <LeftSidebar currentPage={currentPage} />

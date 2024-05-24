@@ -34,7 +34,7 @@ export default function MyDocSearchModal({ onClose }) {
               </span>
             </button>
           </div>
-          {/*body*/}
+          {/* body */}
           <div className="relative p-6 flex-auto">
             {/* Add your DocSearch React modal here */}
             {isOpen && (
