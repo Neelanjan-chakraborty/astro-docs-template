@@ -3,17 +3,18 @@ import { getLanguageFromURL, KNOWN_LANGUAGE_CODES } from '../../languages'
 import { SITE } from '../../consts'
 import AstroLogo from './AstroLogo.astro'
 import SkipToContent from './SkipToContent.astro'
-import SidebarToggle from './SidebarToggle'
+import SidebarToggle from './SidebarToggle.jsx'
 import LanguageSelect from './LanguageSelect'
-import Search from './Search'
+import MobileSidebar from './Sidebar.jsx';
+import Search from './Search';
+import type { only } from 'node:test';
+import { atom } from 'nanostores';
+import { setCurrentPage } from '../Header/cartStore.js';
 
 
-type Props = {
-  currentPage: string
-}
-
-const { currentPage } = Astro.props
-const lang = getLanguageFromURL(currentPage)
+const { currentPage } = Astro.props;
+const lang = getLanguageFromURL(currentPage);
+setCurrentPage(currentPage);
 ---
 
 <header class="sticky top-0 z-50 px-4 py-3 border-b border-b-fair-pink dark:border-b-slate-800 transition duration-500 sm:px-6 lg:px-8 bg-cream dark:bg-[#171527]">
@@ -44,6 +45,7 @@ const lang = getLanguageFromURL(currentPage)
   </nav>
 </div>
 </header>
+<MobileSidebar/>
 
 <style> 
   .logo,.logo1 {
